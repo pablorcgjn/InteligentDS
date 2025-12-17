@@ -1,103 +1,103 @@
-# DS-Simple - Design System
+# DS-Simple - Sistema de Diseño
 
-## Project Overview
-DS-Simple is a design system project aimed at providing a simple, reusable component library and design tokens for consistent UI development.
+## Descripción del Proyecto
+DS-Simple es un sistema de diseño que proporciona una biblioteca de componentes reutilizables y tokens de diseño para un desarrollo UI consistente.
 
-## Project Structure
+## Estructura del Proyecto
 ```
 DS-Simple/
-├── README.md           # Project documentation
-└── CLAUDE.MD          # AI assistant context (this file)
+├── README.md           # Documentación del proyecto
+└── CLAUDE.MD          # Contexto para asistentes IA (este archivo)
 ```
 
-## Purpose
-This design system aims to:
-- Provide reusable UI components
-- Establish consistent design patterns
-- Maintain design tokens (colors, spacing, typography)
-- Ensure accessibility and best practices
+## Propósito
+Este sistema de diseño tiene como objetivo:
+- Proporcionar componentes UI reutilizables
+- Establecer patrones de diseño consistentes
+- Mantener tokens de diseño (colores, espaciado, tipografía)
+- Garantizar accesibilidad y mejores prácticas
 
-## Development Guidelines
+## Guías de Desarrollo
 
-### Code Style
-- Follow consistent naming conventions
-- Write clean, self-documenting code
-- Keep components small and focused
-- Prioritize accessibility (a11y)
+### Estilo de Código
+- Seguir convenciones de nomenclatura consistentes
+- Escribir código limpio y autodocumentado
+- Mantener componentes pequeños y enfocados
+- Priorizar la accesibilidad (a11y)
 
-### Component Development
-When creating components:
-1. Start with semantic HTML
-2. Apply styling through design tokens
-3. Ensure keyboard navigation support
-4. Add ARIA labels where needed
-5. Test across different screen sizes
+### Desarrollo de Componentes
+Al crear componentes:
+1. Comenzar con HTML semántico
+2. Aplicar estilos a través de tokens de diseño
+3. Asegurar soporte de navegación por teclado
+4. Agregar etiquetas ARIA donde sea necesario
+5. Probar en diferentes tamaños de pantalla
 
-### Design Tokens
-Design tokens should include:
-- **Colors**: Primary, secondary, neutral palettes
-- **Typography**: Font families, sizes, weights, line heights
-- **Spacing**: Consistent spacing scale
-- **Breakpoints**: Responsive design breakpoints
-- **Shadows**: Elevation system
-- **Border Radius**: Consistent corner rounding
+### Tokens de Diseño
+Los tokens de diseño deben incluir:
+- **Colores**: Paletas primarias, secundarias y neutrales
+- **Tipografía**: Familias de fuentes, tamaños, pesos, alturas de línea
+- **Espaciado**: Escala de espaciado consistente
+- **Breakpoints**: Puntos de quiebre para diseño responsivo
+- **Sombras**: Sistema de elevación
+- **Border Radius**: Redondeo de esquinas consistente
 
-## Working with This Project
+## Trabajando con Este Proyecto
 
-### Getting Started
-This project is in early stages. Key next steps may include:
-- Setting up a build system (Vite, Webpack, etc.)
-- Choosing a component framework (React, Vue, Web Components, etc.)
-- Establishing design token structure
-- Creating component documentation
+### Primeros Pasos
+Este proyecto está en etapas iniciales. Los próximos pasos clave pueden incluir:
+- Configurar un sistema de build (Vite, Webpack, etc.)
+- Elegir un framework de componentes (React, Vue, Web Components, etc.)
+- Establecer la estructura de tokens de diseño
+- Crear documentación de componentes
 
-### File Organization (Recommended)
+### Organización de Archivos (Recomendada)
 ```
 src/
-├── components/        # UI components
-├── tokens/           # Design tokens
-├── utils/            # Utility functions
-└── styles/           # Global styles
+├── components/        # Componentes UI
+├── tokens/           # Tokens de diseño
+├── utils/            # Funciones utilitarias
+└── styles/           # Estilos globales
 ```
 
-## Conventions
+## Convenciones
 
-### Naming
-- Use descriptive, clear names
-- Components: PascalCase (e.g., `Button`, `Card`)
-- Utilities: camelCase (e.g., `formatDate`, `validateEmail`)
-- Constants: UPPER_SNAKE_CASE (e.g., `PRIMARY_COLOR`)
+### Nomenclatura
+- Usar nombres descriptivos y claros
+- Componentes: PascalCase (ej., `Button`, `Card`)
+- Utilidades: camelCase (ej., `formatDate`, `validateEmail`)
+- Constantes: UPPER_SNAKE_CASE (ej., `PRIMARY_COLOR`)
 
-### Git Workflow
-- Work on feature branches
-- Write clear commit messages
-- Keep commits atomic and focused
+### Flujo de Git
+- Trabajar en ramas de características
+- Escribir mensajes de commit claros
+- Mantener commits atómicos y enfocados
 
-## Notes for AI Assistants
+## Notas para Asistentes IA
 
-### Context
-- This is a design system project (sistema de diseño)
-- Currently in early/setup phase
-- No build system or dependencies configured yet
+### Contexto
+- Este es un proyecto de sistema de diseño
+- Actualmente en fase inicial/configuración
+- Sin sistema de build o dependencias configuradas aún
 
-### When Making Changes
-- Ask about framework/tooling preferences before adding dependencies
-- Follow design system best practices
-- Consider component reusability and composability
-- Maintain consistency with existing patterns
-- Document new components and patterns
+### Al Realizar Cambios
+- Preguntar sobre preferencias de framework/herramientas antes de agregar dependencias
+- Seguir las mejores prácticas de sistemas de diseño
+- Considerar la reutilización y composición de componentes
+- Mantener consistencia con patrones existentes
+- Documentar nuevos componentes y patrones
 
-### Priority Considerations
-1. **Accessibility**: Ensure all components are accessible
-2. **Consistency**: Maintain design token usage
-3. **Simplicity**: Keep the API simple and intuitive
-4. **Performance**: Optimize for bundle size and runtime
-5. **Documentation**: Keep documentation up to date
+### Consideraciones Prioritarias
+1. **Accesibilidad**: Asegurar que todos los componentes sean accesibles
+2. **Consistencia**: Mantener el uso de tokens de diseño
+3. **Simplicidad**: Mantener la API simple e intuitiva
+4. **Rendimiento**: Optimizar para tamaño de bundle y tiempo de ejecución
+5. **Documentación**: Mantener la documentación actualizada
 
-## Future Considerations
-- Component library structure
-- Build and bundling setup
-- Testing strategy (unit, visual regression)
-- Documentation site (Storybook, custom docs)
-- Versioning and release process
-- Package distribution (npm, etc.)
+## Consideraciones Futuras
+- Estructura de biblioteca de componentes
+- Configuración de build y empaquetado
+- Estrategia de testing (unitarias, regresión visual)
+- Sitio de documentación (Storybook, docs personalizados)
+- Proceso de versionado y releases
+- Distribución de paquetes (npm, etc.)
