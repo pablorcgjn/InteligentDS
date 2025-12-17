@@ -1,0 +1,35 @@
+{
+  "codeConnect": {
+    "include": [
+      "components/**/*.figma.tsx",
+      "components/**/*.figma.ts"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      "**/*.spec.tsx",
+      "**/*.spec.ts",
+      "**/*.test.tsx",
+      "**/*.test.ts"
+    ],
+    "parser": "typescript",
+    "repo": {
+      "type": "github",
+      "url": "https://github.com/pablorcgjn/DS-Simple"
+    },
+    "docs": [
+      "README.md"
+    ]
+  }
+}
+```
+
+## Siguiente paso: Crear archivos Code Connect
+
+Para cada componente, necesitas crear un archivo `.figma.tsx` al lado. Por ejemplo, si tienes un botón:
+```
+components/
+├── Button/
+│   ├── Button.tsx
+│   └── Button.figma.tsx  ← NUEVO
