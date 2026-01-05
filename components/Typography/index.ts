@@ -1,0 +1,1 @@
+export { DSTypography } from './Typography';
