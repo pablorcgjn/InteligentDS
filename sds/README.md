@@ -1,139 +1,128 @@
-# Simple Design System (alpha)
+# Intelligent Design System
 
-Using Figma's [Code Connect](https://github.com/figma/code-connect).
+Sistema de diseño inteligente integrado con Figma usando Code Connect.
 
-Simple Design System (SDS) is a base design system that shows how Figma’s Variables, Styles, Components, and Code Connect can be used alongside a React codebase to form a complete picture of a responsive web design system.
+## 📦 Estructura del Monorepo
 
-SDS is not just another design system in Figma. There are still many gaps between design and development, and SDS provides some best practices for how to bridge them. SDS tries to remain honest about its implications in code, while also offering customizability in design beyond the simple theming layer that is typical of many code-first component libraries.
+Este repositorio está organizado como un monorepo usando **npm workspaces**:
 
-Whether you’re looking to use SDS to start a new project, or are looking for examples of some common design systems best practices, you'll find tools inside this codebase and design file to steer you in the right direction.
-
-## Resources
-
-- [Storybook](https://figma.github.io/sds/storybook)
-- [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system)
-
-## Setup
-
-- `npm i` to install dependencies
-- `npm run app:dev` will run server at [localhost:8000](http://localhost:8000) which renders contents of [App.tsx](src/App.tsx)
-- `npm run storybook` to start storybook at [localhost:6006](http://localhost:6006)
-
-### Figma Auth
-
-- [Create a Figma API token](https://www.figma.com/developers/api#authentication)
-  - Add Code Connect scope
-  - Add File Read, Dev Resources Write, and Variables scopes if you want to use the integrations in [scripts](./scripts/)
-  - [More on scopes](https://www.figma.com/developers/api#authentication-scopes)
-- Duplicate [.env-rename](./.env-rename)
-- Rename it to `.env`, it will be ignored from git.
-  - Set `FIGMA_ACCESS_TOKEN=` as your token in `.env`
-  - Set `FIGMA_FILE_KEY=` as your file's key (grab it from the file URL) in `.env`
-
-### Code Connect
-
-SDS is fully backed by Figma's Code Connect. This includes examples for how to connect [primitives](./src/figma/primitives/), as well as [compositions](./src/figma/compositions/) of those primitives for your design system.
-
-This repo utilizes `documentUrlSubstitutions` in [figma.config.json](./figma.config.json). This allows us to keep our docs Figma file-agnostic and colocates all the Figma file-specific information for easy url swapping. The document URL substitutions are also named in a way that helps you find the associated component without clicking a link. A key `<FIGMA_INPUTS_CHECKBOX_GROUP>` is broken down as `<FIGMA_[PAGE_NAME]_[COMPONENT_NAME]>`.
-
-```json
-{
-  "documentUrlSubstitutions": {
-    "<FIGMA_INPUTS_CHECKBOX_GROUP>": "https://figma.com/design/whatever?node-id=123-456"
-  }
-}
+```
+inteligent-ds/
+├── packages/
+│   └── design-system/          # Sistema de diseño principal
+│       ├── src/                # Componentes React
+│       ├── scripts/            # Scripts de sincronización con Figma
+│       ├── .storybook/         # Configuración de Storybook
+│       └── figma.config.json   # Configuración de Code Connect
+├── .github/
+│   └── workflows/              # CI/CD workflows
+├── package.json                # Configuración del workspace raíz
+└── README.md                   # Este archivo
 ```
 
-Allows us to have more expressive URLs in our Code Connect docs:
+## 🚀 Inicio Rápido
 
-```js
-figma.connect(CheckboxGroup, "<FIGMA_INPUTS_CHECKBOX_GROUP>");
+### Instalación
+
+```bash
+# Instalar todas las dependencias del monorepo
+npm install
 ```
 
-### Connecting this repo to a duplicated Figma file
+### Comandos Principales
 
-With the above in mind, a fresh clone of the Simple Design System Figma file should maintain all the node-ids. The steps should be as follows:
+Desde la raíz del repositorio puedes ejecutar:
 
-- Duplicate the [Figma Community File](https://www.figma.com/community/file/1380235722331273046/simple-design-system)
-- Clone this repo
-- Update urls in [figma.config.json](./figma.config.json) to point to your Figma file
-  - Note: the file keys (eg. `J0KLPKXiONDRssXD1AX9Oi`) should be the only change in the urls unless you're creating new components, detaching and recreating.
-- Create and set your [Figma Auth Token](#figma-auth)
-- At that point, `npx figma connect publish` should work and your new file should have Code Connect.
+```bash
+# Desarrollo
+npm run dev                     # Iniciar Vite dev server
+npm run storybook              # Iniciar Storybook
 
-## Structure
+# Build
+npm run build                  # Build app + Storybook
 
-All components and styles are in [src/ui](./src/ui). Within that directory, code is broken down into a few categories.
+# Calidad de código
+npm run lint                   # Ejecutar ESLint
 
-### [src/ui/compositions](./src/ui/compositions/)
+# Sincronización con Figma
+npm run tokens:rest            # Sincronizar tokens desde Figma REST API
+npm run icons:rest             # Sincronizar iconos desde Figma REST API
+npm run tokens                 # Sincronizar tokens (sin REST API)
+npm run icons                  # Sincronizar iconos (sin REST API)
+```
 
-Example arrangements of primitive components to demonstrate how you might use SDS to build a responsive website.
+### Trabajar en el Design System
 
-### [src/ui/hooks](./src/ui/hooks/)
+Para trabajar directamente en el paquete del design system:
 
-Custom React hook definitions
+```bash
+cd packages/design-system
+npm run storybook              # Iniciar Storybook
+npm run dev                    # Iniciar Vite
+```
 
-### [src/ui/icons](./src/ui/icons/)
+## 🔗 Integración con Figma
 
-All icon components. Automatically generated by [scripts/icons](./scripts/icons)
+Este proyecto usa **Figma Code Connect** para vincular componentes de Figma con su implementación en código.
 
-### [src/ui/images](./src/ui/images/)
+### Configuración
 
-Placeholder images.
+1. Copia `.env-rename` a `.env` en la raíz del repositorio:
+   ```bash
+   cp .env-rename .env
+   ```
 
-### [src/ui/layout](./src/ui/layout/)
+2. Configura tus credenciales de Figma en `.env`:
+   ```
+   FIGMA_ACCESS_TOKEN=tu_token_aqui
+   FIGMA_FILE_KEY=tu_file_key_aqui
+   ```
 
-Layout components. Crucial to SDS layouts, but do not have analogous component in Figma.
+### Sincronización
 
-### [src/ui/primitives](./src/ui/primitives/)
+- **Tokens de diseño**: `npm run tokens:rest` - Sincroniza colores, tipografía y espaciado
+- **Iconos**: `npm run icons:rest` - Genera componentes React desde iconos de Figma
+- **Code Connect**: Los mappings se publican automáticamente al hacer merge a `main`
 
-The main component library. SDS primitives can't be reduced further into sub components.
+## 🎨 Storybook
 
-### [src/ui/providers](./src/ui/providers/)
+Storybook está configurado para documentar todos los componentes del sistema de diseño.
 
-Custom React provider definitions
+```bash
+# Desarrollo
+npm run storybook
 
-### [src/ui/utils](./src/ui/utils/)
+# Build
+npm run storybook:build
+```
 
-Custom utilities and utility components
+URL local: http://localhost:6006/
 
-### Code Connect and Storybook
+## 📚 Documentación de Paquetes
 
-All Code Connect docs and Storybook stories follow the same categorization are defined in [src/figma](./src/figma) and [src/stories](./src/stories).
+- [Design System](./packages/design-system/README.md) - Documentación completa del sistema de diseño
 
-## Scripts
+## 🔄 CI/CD
 
-Some example integrations are available in `scripts` directory. They may require additional API scope that your org may or may not have access to. Where possible, there are some plugin examples to help fill gaps.
+El proyecto incluye workflows de GitHub Actions para:
 
-### [scripts/component-metadata](./scripts/component-metadata)
+- ✅ **PR Checks**: Verifica linting y build en cada PR
+- 🚀 **Deploy to GitHub Pages**: Despliega automáticamente al hacer merge a `main`
+- 🔗 **Code Connect Publish**: Publica automáticamente mappings a Figma
+- 👀 **PR Previews**: Genera previews de Storybook en Netlify para cada PR
 
-- Scripts to run in the JS Console in Figma
-- Bulk manage descriptions for all components in the file. Instead of making a complicated plugin, you can do this more simply by running scripts directly from the JavaScript console.
-- Copy the contents of [scripts/component-metadata/exportComponentJSON.js](./scripts/component-metadata/exportComponentJSON.js) and run in the console with the file open.
-  - "Copy as object" the result and paste into [scripts/component-metadata/components.json](./scripts/component-metadata/components.json).
-- There you can modify descriptions more easily.
-- Once you have modified the descriptions, copy the JSON and paste at the top of [scripts/component-metadata/importComponentJSON.js](./scripts/component-metadata/importComponentJSON.js) as the value of the `json` variable.
-- Copy all the contents of the import file and run in the console to batch update descriptions for the entire file.
-- **This will only update the descriptions.** To update Dev Resources, you can use [scripts/dev-resources](#scriptsdev-resources).
+Ver [CI/CD Setup](./.github/CI-CD-SETUP.md) para más detalles.
 
-### [scripts/dev-resources](./scripts/dev-resources)
+## 🛠️ Tecnologías
 
-- `npm run script:dev-resources` (REST API only)
-- Sets dev resources for all components described in [scripts/dev-resources/devResources.mjs](./scripts/dev-resources/devResources.mjs) to match.
-- Useful when swapping urls in bulk. Requires `Dev Resources: Write` scope on your REST API token.
+- **React 18** - Framework de UI
+- **TypeScript** - Tipado estático
+- **Vite** - Build tool y dev server
+- **Storybook 8** - Documentación de componentes
+- **React Aria Components** - Componentes accesibles
+- **Figma Code Connect** - Integración con Figma Dev Mode
+- **npm Workspaces** - Gestión de monorepo
 
-### [scripts/icons](./scripts/icons)
+## 📄 Licencia
 
-- `npm run script:icons:rest`
-- Gets all icons from the file, and generates components in the [src/ui/icons](./src/ui/icons) directory.
-- Also generates [src/figma/icons/Icons.figma.tsx](./src/figma/icons/Icons.figma.tsx) for Code Connect.
-
-### [scripts/tokens](./scripts/tokens)
-
-- `npm run script:tokens:rest`
-- Gets all variables and styles from Figma, and converts them to [src/theme.css](./src/theme.css).
-- Creates [scripts/tokens/tokensCodeSyntaxes.js](./scripts/tokens/tokensCodeSyntaxes.js) which is a script you can run in the JS console in Figma to update all the variable's [codeSyntaxes](https://www.figma.com/plugin-docs/api/Variable/#codesyntax) with CSS that matches this repo.
-- Includes some example plugins for how to get the same data without the Variables REST API.
-  - [Install plugins](https://www.figma.com/plugin-docs/plugin-quickstart-guide/) in Development
-  - Run plugins, and copy plugin outputs into [scripts/tokens/styles.json](./scripts/tokens/styles.json) and [scripts/tokens/tokens.json](./scripts/tokens/tokens.json)
-  - Run `npm run script:tokens` (without `:rest`) and it will reference the JSON files directly without making a REST API request to update them
+MIT

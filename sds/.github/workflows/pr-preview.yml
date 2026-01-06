@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:
-          publish-dir: './dist/storybook'
+          publish-dir: './packages/design-system/dist/storybook'
           production-deploy: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from PR #${{ github.event.number }}"
